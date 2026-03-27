@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Race 2 Announcement</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Bitter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --card: #161616;
+    --card-alt: #1c1c1c;
+    --accent: #ff5722;
+    --accent-dim: #ff57221a;
+    --gold: #ffd700;
+    --silver: #c0c0c0;
+    --bronze: #cd7f32;
+    --text: #e8e8e8;
+    --text-dim: #888;
+    --border: #2a2a2a;
+    --green: #4caf50;
+    --red: #ef5350;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Bitter', Georgia, serif;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+
+  .header::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: var(--accent);
+    margin: 1.5rem auto 0;
+  }
+
+  .race-number {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.1;
+  }
+
+  .route-badge {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.4rem 1.2rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+  }
+
+  /* Section titles */
+  .section-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Rider table */
+  .table-wrap {
+    margin-bottom: 2.5rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  thead th {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-align: left;
+    padding: 0.6rem 0.8rem;
+    border-bottom: 2px solid var(--border);
+  }
+
+  thead th:not(:first-child) {
+    text-align: right;
+  }
+
+  tbody td {
+    padding: 0.7rem 0.8rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+
+  tbody td:not(:first-child) {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  tbody tr:hover {
+    background: var(--card);
+  }
+
+  .rider-name {
+    font-weight: 700;
+  }
+
+  .rider-nickname {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    font-style: italic;
+    margin-top: 2px;
+  }
+
+  .wkg {
+    color: var(--text-dim);
+    font-size: 0.8rem;
+  }
+
+  /* Start times table */
+  .start-table tbody td:first-child {
+    font-weight: 700;
+  }
+
+  .offset {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    color: var(--accent);
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+
+  .tag-go {
+    background: var(--green);
+    color: #000;
+  }
+
+  .tag-honest {
+    background: var(--border);
+    color: var(--text-dim);
+  }
+
+  .tag-rigged {
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+  }
+
+  /* Prose */
+  .prose {
+    margin-bottom: 2.5rem;
+    line-height: 1.75;
+    font-size: 0.95rem;
+  }
+
+  .prose p {
+    margin-bottom: 1rem;
+  }
+
+  .prose strong {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .highlight-box {
+    background: var(--card);
+    border-left: 3px solid var(--accent);
+    padding: 1rem 1.2rem;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-dim);
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  .footer span {
+    color: var(--accent);
+  }
+
+  /* Last race results mini section */
+  .last-race {
+    margin-bottom: 2.5rem;
+  }
+
+  .podium-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.5rem 0.8rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .podium-pos {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    width: 2rem;
+    text-align: center;
+  }
+
+  .podium-pos.p1 { color: var(--gold); }
+  .podium-pos.p2 { color: var(--silver); }
+  .podium-pos.p3 { color: var(--bronze); }
+  .podium-pos.p4 { color: var(--text-dim); }
+
+  .podium-name { font-weight: 600; flex: 1; }
+  .podium-time { font-variant-numeric: tabular-nums; color: var(--text-dim); font-size: 0.9rem; }
+
+  /* Scorecard */
+  .scorecard {
+    margin-bottom: 2.5rem;
+  }
+
+  .score-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.6rem 0.8rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .score-rank {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    width: 1.5rem;
+    text-align: center;
+    color: var(--text-dim);
+  }
+
+  .score-rank.s1 { color: var(--gold); }
+  .score-rank.s2 { color: var(--silver); }
+
+  .score-name {
+    font-weight: 600;
+    flex: 1;
+  }
+
+  .score-pts {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    color: var(--accent);
+    min-width: 3rem;
+    text-align: right;
+  }
+
+  .score-bar-wrap {
+    width: 100px;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .score-bar {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="race-number">Handicap Series — Race 02</div>
+    <h1>Beach Island Loop<br>× 2 Laps</h1>
+    <div class="route-badge">Watopia · 26.2 km · 88m Elevation · Flat as a Barton</div>
+  </div>
+
+  <!-- Last Race Recap -->
+  <div class="last-race">
+    <div class="section-title">Race 01 Recap — Casse-Pattes</div>
+    <div class="podium-item"><span class="podium-pos p1">1</span><span class="podium-name">S. Heslop</span><span class="podium-time">52:08 · 231W · 2.9 W/kg</span></div>
+    <div class="podium-item"><span class="podium-pos p2">2</span><span class="podium-name">A. Waterhouse</span><span class="podium-time">52:26 · 253W · 3.4 W/kg</span></div>
+    <div class="podium-item"><span class="podium-pos p3">3</span><span class="podium-name">A. Barton</span><span class="podium-time">53:21 · 210W · 1.6 W/kg</span></div>
+    <div class="podium-item"><span class="podium-pos p4">4</span><span class="podium-name">A. Einoder</span><span class="podium-time">54:23 · 133W · 2.1 W/kg</span></div>
+  </div>
+
+  <!-- Series Standings -->
+  <div class="scorecard">
+    <div class="section-title">Series Standings — After Race 01</div>
+    <div class="score-row"><span class="score-rank s1">1</span><span class="score-name">S. Heslop</span><div class="score-bar-wrap"><div class="score-bar" style="width:100%"></div></div><span class="score-pts">4 pts</span></div>
+    <div class="score-row"><span class="score-rank s2">2</span><span class="score-name">A. Waterhouse</span><div class="score-bar-wrap"><div class="score-bar" style="width:75%"></div></div><span class="score-pts">3 pts</span></div>
+    <div class="score-row"><span class="score-rank">3</span><span class="score-name">A. Barton</span><div class="score-bar-wrap"><div class="score-bar" style="width:50%"></div></div><span class="score-pts">2 pts</span></div>
+    <div class="score-row"><span class="score-rank">4</span><span class="score-name">A. Einoder</span><div class="score-bar-wrap"><div class="score-bar" style="width:25%"></div></div><span class="score-pts">1 pt</span></div>
+    <div class="score-row"><span class="score-rank">5</span><span class="score-name">L. Bone</span><div class="score-bar-wrap"><div class="score-bar" style="width:0%"></div></div><span class="score-pts">0 pts</span></div>
+  </div>
+
+  <!-- Rider Profiles -->
+  <div class="table-wrap">
+    <div class="section-title">The Field</div>
+    <table>
+      <thead>
+        <tr><th>Rider</th><th>Weight</th><th>Race W</th><th>W/kg</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <span class="rider-name">S. Heslop</span>
+            <span class="rider-nickname">"The Diesel"</span>
+          </td>
+          <td>80 kg</td>
+          <td>231W</td>
+          <td>2.9 <span class="wkg">W/kg</span></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="rider-name">A. Waterhouse</span>
+            <span class="rider-nickname">"No Heart (Rate)"</span>
+          </td>
+          <td>74 kg</td>
+          <td>253W</td>
+          <td>3.4 <span class="wkg">W/kg</span></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="rider-name">A. Barton</span>
+            <span class="rider-nickname">"The Fridge"</span>
+          </td>
+          <td>135 kg</td>
+          <td>210W</td>
+          <td>1.6 <span class="wkg">W/kg</span></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="rider-name">A. Einoder</span>
+            <span class="rider-nickname">"Small Bark"</span>
+          </td>
+          <td>64 kg</td>
+          <td>133W</td>
+          <td>2.1 <span class="wkg">W/kg</span></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="rider-name">L. Bone</span>
+            <span class="rider-nickname">"Big Glands"</span>
+          </td>
+          <td>85 kg</td>
+          <td>~195W</td>
+          <td>2.3 <span class="wkg">W/kg</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Start Times -->
+  <div class="table-wrap">
+    <div class="section-title">Handicap Start Times</div>
+    <table class="start-table">
+      <thead>
+        <tr><th>Rider</th><th>Start Offset</th><th>Est. Time</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>A. Einoder <span class="tag tag-go">GO</span></td>
+          <td><span class="offset">0:00</span></td>
+          <td>48:00</td>
+        </tr>
+        <tr>
+          <td>A. Barton</td>
+          <td><span class="offset">4:00</span></td>
+          <td>43:30</td>
+        </tr>
+        <tr>
+          <td>L. Bone</td>
+          <td><span class="offset">4:30</span></td>
+          <td>44:30</td>
+        </tr>
+        <tr>
+          <td>S. Heslop</td>
+          <td><span class="offset">7:30</span></td>
+          <td>41:30</td>
+        </tr>
+        <tr>
+          <td>A. Waterhouse</td>
+          <td><span class="offset">10:00</span></td>
+          <td>39:00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Race Announcement -->
+  <div class="prose">
+    <div class="section-title">The Race Brief</div>
+
+    <p>Welcome back, you magnificent underperformers. After Race 1's thrilling display of mediocrity on Casse-Pattes, we're doing it all again. This time on <strong>Beach Island Loop × 2 laps</strong> — 26.2km of pancake-flat Watopian coastline with about as much climbing as Barton does getting off the couch.</p>
+
+    <p><strong>Heslop</strong> somehow won Race 1 despite producing fewer watts than Waterhouse's warm-up. Proof that if you give a man enough of a head start, even 2.9 W/kg can taste victory. Don't expect the same charity this week — you're starting 7:30 behind Einoder and you'll have to earn it on a route with zero hills to hide on.</p>
+
+    <p><strong>Waterhouse</strong>, the self-proclaimed strongest rider in the group, finished second. 253 watts and 3.4 W/kg and still couldn't win a four-man handicap race. Either the handicap was too generous or you spent the first 10km admiring the French scenery. This week you start dead last with 10 minutes to make up. Also, buy a heart rate strap you cheap bastard.</p>
+
+    <p><strong>Barton</strong> — 135 kilograms of raw, uncut determination — hauled himself around Casse-Pattes at 1.6 W/kg and somehow finished only a minute off the win. On a flat course like Beach Island Loop, the big fella actually stands a chance. Physics says a heavy rider with 210W on flat ground isn't as slow as you'd think. We've picked this route specifically so Barton doesn't have to climb anything steeper than a speed bump.</p>
+
+    <p><strong>Einoder</strong> finished last in Race 1 with 133 watts. One hundred and thirty-three. That's less than a household appliance. A toaster could have beaten you. A motivated ceiling fan could have beaten you. On the bright side, you're the lightest rider so those 133W at least move you along at 2.1 W/kg, which is... well, it's a number. You start first this week with a 10-minute buffer on Waterhouse. Use it wisely.</p>
+
+    <p><strong>Luke "Big Glands" Bone</strong> enters the fray at 85kg and an alleged 215W FTP. No race data to judge him on yet, so we're taking his word for it. Bold move claiming Big Glands as a nickname when you haven't actually proven anything. Start time is mid-pack. Let's see if the glands deliver.</p>
+
+    <div class="highlight-box">
+      <strong>Race rules:</strong> Two laps of Beach Island Loop, Watopia. Staggered start times as per the table above. No whinging about the handicap. If you get caught, you got caught. If you catch someone, resist the urge to sit on their wheel like a parasite — show some class and ride through. Waterhouse must wear a heart rate strap or accept a 30-second penalty for cowardice.
+    </div>
+
+    <p>See you on the start line. Einoder goes first. Everyone else: set a timer and try not to cramp up while you wait.</p>
+  </div>
+
+  <div class="footer">
+    Handicap calculations performed by a machine with no emotional attachment to any of you.<br>
+    <span>May the least terrible rider win.</span>
+  </div>
+
+</div>
+</body>
+</html>
