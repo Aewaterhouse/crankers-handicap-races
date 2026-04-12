@@ -1,0 +1,58 @@
+{
+  "_notes": "Rider profiles for handicap prediction. Update after each race.",
+  "_units": "weight_kg, height_cm, power in watts, cda in m^2, crr dimensionless",
+  "Waterhouse": {
+    "weight_kg": 74,
+    "height_cm": 178,
+    "cda": 0.256,
+    "crr": 0.004,
+    "race_avg_power": 268,
+    "power_fade_pct": 0.0,
+    "notes": "Sangbagging dog. R2 DNF (17min only), R3 win at 278W/3.8wkg. CdA calibrated from R2+R3 fit data."
+  },
+  "Heslop": {
+    "weight_kg": 80,
+    "height_cm": 183,
+    "cda": 0.267,
+    "crr": 0.004,
+    "race_avg_power": 235,
+    "power_fade_pct": 0.05,
+    "notes": "The Diesel. Very consistent. R2 210W, R3 237W (struggled on day). CdA calibrated from fit data. Nudged up to 235W to reflect normal-day ability."
+  },
+  "Einoder": {
+    "weight_kg": 64,
+    "height_cm": 170,
+    "cda": 0.240,
+    "crr": 0.004,
+    "race_avg_power": 152,
+    "power_fade_pct": 0.07,
+    "notes": "Lightest gym enthusiast, low absolute power but decent w/kg on climbs. R2 152W, R3 156W. Power nudged to 152W, fade 7% to match R3 actual."
+  },
+  "Barton": {
+    "weight_kg": 135,
+    "height_cm": 190,
+    "cda": 0.400,
+    "crr": 0.004,
+    "race_avg_power": 205,
+    "power_fade_pct": 0.06,
+    "notes": "The Fridge. 135kg makes climbs brutal. R2 220W, R3 200W (faded, ~1min tech issues). Power set to 205W, fade 6%. Given a small helping hand — zero wins in series."
+  },
+  "Baum": {
+    "weight_kg": 76,
+    "height_cm": 178,
+    "cda": 0.244,
+    "crr": 0.004,
+    "race_avg_power": 260,
+    "power_fade_pct": 0.00,
+    "notes": "Pissgargling triathlete. Only raced R2 (253W, 3.33wkg). DNS R1 and R3. High fade (8%) observed in R2. Limited data — 1 race only."
+  },
+  "Bone": {
+    "weight_kg": 85,
+    "height_cm": 183,
+    "cda": 0.278,
+    "crr": 0.004,
+    "race_avg_power": 210,
+    "power_fade_pct": 0.05,
+    "notes": "Big Glands Bone. ZERO race data. Self-reported FTP 215W but has never raced. Avg power set conservatively at 185W (85% of stated FTP). Assume 5% fade. All values are guesses."
+  }
+}
