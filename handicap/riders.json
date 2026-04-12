@@ -6,36 +6,36 @@
     "height_cm": 178,
     "cda": 0.256,
     "crr": 0.004,
-    "race_avg_power": 268,
+    "race_avg_power": 272,
     "power_fade_pct": 0.0,
-    "notes": "Sangbagging dog. R2 DNF (17min only), R3 win at 278W/3.8wkg. CdA calibrated from R2+R3 fit data."
+    "notes": "Sandbagging dog. R2 DNF, R3 win at 278W/3.8wkg, R4 272W/3.7wkg (dead last despite fastest ride time). Power updated to 272W. CdA 0.256 calibrated from fit data."
   },
   "Heslop": {
     "weight_kg": 80,
     "height_cm": 183,
     "cda": 0.267,
     "crr": 0.004,
-    "race_avg_power": 235,
-    "power_fade_pct": 0.05,
-    "notes": "The Diesel. Very consistent. R2 210W, R3 237W (struggled on day). CdA calibrated from fit data. Nudged up to 235W to reflect normal-day ability."
+    "race_avg_power": 240,
+    "power_fade_pct": 0.03,
+    "notes": "The Diesel. 4 podiums in 4 races. R2 210W, R3 237W, R4 240W/3.0wkg. Power updated to 240W. Fade reduced to 3% — very consistent across laps in R4."
   },
   "Einoder": {
     "weight_kg": 64,
     "height_cm": 170,
     "cda": 0.240,
     "crr": 0.004,
-    "race_avg_power": 152,
-    "power_fade_pct": 0.07,
-    "notes": "Lightest gym enthusiast, low absolute power but decent w/kg on climbs. R2 152W, R3 156W. Power nudged to 152W, fade 7% to match R3 actual."
+    "race_avg_power": 151,
+    "power_fade_pct": 0.05,
+    "notes": "Small Bark Big Bite. R2 152W, R3 156W, R4 151W/2.4wkg. Consistent ~152W across 3 races. Fade reduced to 5% — held power well in R4."
   },
   "Barton": {
     "weight_kg": 135,
     "height_cm": 190,
-    "cda": 0.400,
+    "cda": 0.350,
     "crr": 0.004,
-    "race_avg_power": 205,
-    "power_fade_pct": 0.06,
-    "notes": "The Fridge. 135kg makes climbs brutal. R2 220W, R3 200W (faded, ~1min tech issues). Power set to 205W, fade 6%. Given a small helping hand — zero wins in series."
+    "race_avg_power": 219,
+    "power_fade_pct": 0.04,
+    "notes": "The Fridge. R4 WINNER at 219W/1.6wkg, ride time 38:33 vs predicted 48:22 — model was 10min off. CdA reduced from 0.400 to 0.350 to better match R4 speed data. Power updated to 219W. Vendetta over — now Claude's biggest fan."
   },
   "Baum": {
     "weight_kg": 76,
@@ -44,7 +44,7 @@
     "crr": 0.004,
     "race_avg_power": 260,
     "power_fade_pct": 0.00,
-    "notes": "Pissgargling triathlete. Only raced R2 (253W, 3.33wkg). DNS R1 and R3. High fade (8%) observed in R2. Limited data — 1 race only."
+    "notes": "Pissgargling triathlete. Only raced R2 (253W, 3.33wkg). DNS R1, R3, R4. Limited data — 1 race only."
   },
   "Bone": {
     "weight_kg": 85,
@@ -53,6 +53,6 @@
     "crr": 0.004,
     "race_avg_power": 210,
     "power_fade_pct": 0.05,
-    "notes": "Big Glands Bone. ZERO race data. Self-reported FTP 215W but has never raced. Avg power set conservatively at 185W (85% of stated FTP). Assume 5% fade. All values are guesses."
+    "notes": "Big Glands Bone. ZERO race data. DNS all 4 rounds. Self-reported FTP 215W but has never raced. All values are guesses."
   }
 }

@@ -10,24 +10,24 @@ Canonical rider profiles are in `handicap/riders.json` — that's the source of 
 
 | Rider | Weight | Race Avg W | W/kg | Nickname | Key Notes |
 |-------|--------|-----------|------|----------|-----------|
-| A. Waterhouse (you) | 74kg | 268W | 3.62 | "The Sandbagging Dog" | Strongest rider. DNF'd R2, won R3 at 278W/3.8wkg. CdA 0.256. |
-| S. Heslop | 80kg | 235W | 2.94 | "The Diesel" | Boringly consistent. 3 podiums in 3 races. Series leader. CdA 0.267, 5% fade. |
-| A. Einoder | 64kg | 152W | 2.38 | "Small Bark, Big Bite" | Lightest rider, low absolute power. Won R2. CdA 0.240, 7% fade. |
-| A. Barton | 135kg | 205W | 1.52 | "The Fridge" | Heaviest by far. Vendetta against Claude. Climbs are brutal. CdA 0.400, 6% fade. |
-| M. Baum | 76kg | 260W | 3.42 | "The Piss Gargler" | Only raced R2. DNS R1, R3. CdA 0.244, 0% fade. Limited data. |
-| L. Bone | 85kg | 210W | 2.47 | "Big Glands" | ZERO race data. Self-reported FTP 215W. 0 starts in 3 rounds. All values are guesses. |
-| C. Bone | ~5kg | 0W | N/A | "The Prodigy" | Luke's 9-week-old son. Joke entry. |
+| A. Waterhouse (you) | 74kg | 272W | 3.68 | "The Sandbagging Dog" | Strongest rider. DNF'd R2, won R3 at 278W/3.8wkg, R4 272W/3.7wkg (last despite fastest time). CdA 0.256. |
+| S. Heslop | 80kg | 240W | 3.00 | "The Diesel" | Boringly consistent. 4 podiums in 4 races, 0 wins. Series leader. CdA 0.267, 3% fade. |
+| A. Einoder | 64kg | 151W | 2.36 | "Small Bark, Big Bite" | Lightest rider, low absolute power. Won R2. CdA 0.240, 5% fade. |
+| A. Barton | 135kg | 219W | 1.62 | "The Fridge" | Heaviest by far. Won R4 (model was 10min off). Vendetta over — now Claude's simp. CdA 0.350, 4% fade. |
+| M. Baum | 76kg | 260W | 3.42 | "The Piss Gargler" | Only raced R2. DNS R1, R3, R4. CdA 0.244, 0% fade. Limited data. |
+| L. Bone | 85kg | 210W | 2.47 | "Big Glands" | ZERO race data. Self-reported FTP 215W. 0 starts in 4 rounds. All values are guesses. |
+| C. Bone | ~5kg | 0W | N/A | "The Prodigy" | Luke's baby son. Joke entry. |
 
-## Series Standings After Race 3
+## Series Standings After Race 4
 
-| Rider | R1 | R2 | R3 | Total |
-|-------|----|----|-----|-------|
-| S. Heslop | 4 | 4 | 3 | 11 |
-| A. Waterhouse | 3 | 1 | 4 | 8 |
-| A. Einoder | 1 | 5 | 2 | 8 |
-| A. Barton | 2 | 2 | 1 | 5 |
-| M. Baum | 0 | 3 | 0 | 3 |
-| L. Bone | 0 | 0 | 0 | 0 |
+| Rider | R1 | R2 | R3 | R4 | Total |
+|-------|----|----|-----|-----|-------|
+| S. Heslop | 4 | 4 | 3 | 3 | 14 |
+| A. Einoder | 1 | 5 | 2 | 2 | 10 |
+| A. Barton | 2 | 2 | 1 | 4 | 9 |
+| A. Waterhouse | 3 | 1 | 4 | 1 | 9 |
+| M. Baum | 0 | 3 | 0 | 0 | 3 |
+| L. Bone | 0 | 0 | 0 | 0 | 0 |
 
 **Scoring:** N points for 1st in an N-rider field (starters only). DNF scores last-place points. DNS scores 0.
 
@@ -75,22 +75,25 @@ python handicap/predict.py --riders Waterhouse,Heslop,Einoder,Barton
 2. These values were loaded into `riders.json` as starting points
 3. Alex manually tunes profiles based on gut feel and race context (e.g. tech issues, good/bad days)
 4. Backtest against R3 actuals showed ~30-100s accuracy across all riders
-5. After each race: compare predictions to actuals, update `riders.json`, add new .fit files to `fit/R{n}/`
+5. R4 Glasgow Crit was catastrophically wrong — all riders 4-10 minutes faster than predicted, Barton 9:49 off
+6. After each race: compare predictions to actuals, update `riders.json`, add new .fit files to `fit/R{n}/`
 
 ### Known model limitations
 
-- Barton's steep climb speed (>6% gradient) is physics-extrapolated — no real data from R2/R3 courses
+- Glasgow Crit course definition is significantly wrong — model predicted all riders 4-10 min too slow. Needs recalibration.
+- Barton's CdA was reduced from 0.400 to 0.350 after R4 — still may need further tuning
 - Bone has zero race data — everything is a guess
 - Baum has one race only (R2) — limited confidence
 - Model assumes no drafting — chase groups benefit from sitting in
 - Power fade is modelled as linear across laps — reality is more complex
+- Heslop's basic Claude chat predictions outperformed the physics model for R4
 
 ## Race History
 
 - **R1:** Unknown route. Heslop 1st, Waterhouse 2nd, Barton 3rd, Einoder 4th. Baum & Bone DNS.
 - **R2:** Beach Island Loop x2, Watopia (26.2km, 88m, flat). Einoder 1st, Heslop 2nd, Baum 3rd, Barton 4th, Waterhouse DNF, Bone DNS.
 - **R3:** Times Square Circuit x6, New York (21.8km, 120m). Waterhouse 1st, Heslop 2nd, Einoder 3rd, Barton 4th, Baum DNS, Bone DNS.
-- **R4 (upcoming):** Glasgow Crit Six, Scotland (18.2km, 204m, 6 laps). Sunday 13 April 2026, 6:30 AM AEST.
+- **R4:** Glasgow Crit Six, Scotland (18.2km, 204m, 6 laps). Barton 1st (38:33, 219W), Heslop 2nd (42:57, 240W), Einoder 3rd (43:00, 151W), Waterhouse 4th (44:22, 272W). Baum DNS, Bone DNS. Handicaps were catastrophically wrong — Barton won by 4:24.
 
 ## How the Site Works
 
