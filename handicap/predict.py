@@ -66,6 +66,23 @@ COURSES = {
         'total_km': 26.2,
         'total_elevation_m': 88,
     },
+
+    'beach_island_x1': {
+        'name': 'Beach Island Loop',
+        'world': 'Watopia',
+        'laps': 1,
+        'lead_in': [(200, 0.00)],
+        'lap': [
+            (3000, 0.000),   # flat through downtown
+            (2000, 0.005),   # gentle rise toward volcano
+            (1500, -0.003),  # drop to land bridge
+            (2000, 0.008),   # dirt switchbacks to Italian Villas
+            (1500, -0.005),  # descent from villas
+            (2900, 0.000),   # bridge/islands bypass + ocean tube, flat
+        ],
+        'total_km': 13.1,
+        'total_elevation_m': 44,
+    },
 }
 
 
